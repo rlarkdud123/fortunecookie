@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 
-# 운세 문구 60개 (전통 스타일)
+# 전통 운세 스타일 문구 60개 (샘플)
 fortunes = [
     "오늘은 무난한 하루가 되니 모든 일에 신중히 임하세요.",
     "뜻하지 않은 행운이 찾아오니 기회를 놓치지 마세요.",
@@ -63,24 +63,50 @@ fortunes = [
     "조용한 마음으로 하루를 시작하세요.",
 ]
 
-# 행운의 색깔 리스트
-lucky_colors = [
-    "빨간색 🔴", "주황색 🟠", "노란색 🟡", "초록색 🟢",
-    "파란색 🔵", "남색 🟣", "보라색 🟣", "분홍색 🌸",
-    "갈색 🟤", "흰색 ⚪", "검은색 ⚫", "금색 ✨", "은색 🌟",
-]
-
-# 페이지 제목 및 스타일
-st.markdown
+# 디자인 스타일
+st.markdown(
+    """
     <style>
     .main {
-        background-color: #e0f2f1;
-        color: #004d40;
-        font-family: 'Nanum Gothic', sans-serif;
-        padding: 30px;
+        background-color: #d7f0d3;
+        color: #1f3d1f;
+        font-family: 'Georgia', serif;
+        padding: 20px;
     }
     h1 {
         text-align: center;
-        color: #00796b;
-        font-weight: 800;
-        marg
+        color: #2e7d32;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    .stTextInput > div > input {
+        border: 2px solid #388e3c !important;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 18px;
+        background-color: #e8f5e9;
+        color: #1b5e20;
+    }
+    p {
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+        margin-top: 25px;
+        color: #2e7d32;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("<h1>🍃 오늘의 운세를 알려드립니다 🍃</h1>", unsafe_allow_html=True)
+
+name = st.text_input("이름을 입력해주세요:", max_chars=20)
+
+if name:
+    random.seed(name)
+    fortune = random.choice(fortunes)
+    st.markdown(f"<p>✨ {name} 님의 오늘의 운세 ✨</p>", unsafe_allow_html=True)
+    st.markdown(f"<p>{fortune}</p>", unsafe_allow_html=True)
+else:
+    st.markdown("<p>이름을 입력하면 오늘의 운세를 차분하고 초록한 분위기로 알려드려요 🍃</p>", unsafe_allow_html=True)
