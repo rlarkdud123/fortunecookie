@@ -71,8 +71,7 @@ lucky_colors = [
 ]
 
 # 페이지 제목 및 스타일
-st.markdown(
-    """
+st.markdown
     <style>
     .main {
         background-color: #e0f2f1;
